@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace Singleton
 {
-    public class Singleton
+    public class Hospital
     {
-        private static Singleton _instance;     //Static property with have private keyword
+        private static Hospital _instance;     //Static property with have private keyword
 
-        private Singleton()      //Private constructor 
+        private Hospital()      //Private constructor 
         {
         }
 
-        public static Singleton Instance
+        public static Hospital Instance   //static property & return instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new Singleton();
+                    _instance = new Hospital();
 
                 return _instance;
             }
         }
 
-        public void DoSingletonOperation()    //non sttaic public method for singleton opeartion
+        public void DoSingletonOperation()    //non staic public method for singleton opeartion (call by refernce)
         {
             Console.WriteLine("singleton operation");
         }
@@ -34,12 +34,13 @@ namespace Singleton
     {
         static void Main(string[] args)
         {
-          
-                Singleton singleton = Singleton.Instance;
 
-                Singleton singleton2 = Singleton.Instance;
+            Hospital hospital = Hospital.Instance;
+            Hospital hospital2 = Hospital.Instance;
 
-                Console.WriteLine(singleton == singleton2);
+            hospital.DoSingletonOperation();   //singleton opeartion
+
+                Console.WriteLine(hospital == hospital2);
             Console.ReadLine();
            
             
